@@ -14,7 +14,9 @@ namespace PhasmoRESTApi.Models
         public string Description { get; set; }
         public string Strengths { get; set; }
         public string Weaknesses { get; set; }
-        [Required]
-        public List<Evidence> Evidence { get; set; }
+
+        // Navigation Properties
+        public ICollection<Ghost_Evidence> Ghost_Evidences { get; set; }
+
     }
 }

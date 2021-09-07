@@ -12,7 +12,7 @@ namespace PhasmoRESTApi.Migrations
                 {
                     GhostId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Strengths = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Weaknesses = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -28,7 +28,7 @@ namespace PhasmoRESTApi.Migrations
                 {
                     EvidenceId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     GhostId = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>

@@ -9,10 +9,11 @@ namespace PhasmoRESTApi.Profiles
         public EvidenceProfile()
         {
             // Source -> Target
-            CreateMap<Evidence, EvidenceReadDto>();
+            CreateMap<Evidence, EvidenceReadDto>()
+                .ReverseMap();
             CreateMap<EvidenceCreateDto, Evidence>();
-            CreateMap<EvidenceUpdateDto, Evidence>();
-            CreateMap<Evidence, EvidenceUpdateDto>();
+            CreateMap<EvidenceUpdateDto, Evidence>()
+                .ReverseMap(); // let's us use the reverse as well (Evidence -> EvidenceUpdateDto)
         }
     }
 }

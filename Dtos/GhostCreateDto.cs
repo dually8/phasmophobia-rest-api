@@ -12,6 +12,6 @@ namespace PhasmoRESTApi.Dtos
         public string Strengths { get; set; }
         public string Weaknesses { get; set; }
         [Required]
-        public List<EvidenceCreateDto> Evidence { get; set; }
+        public List<long> EvidenceIds { get; set; }
     }
 }

@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PhasmoRESTApi.Models;
+using PhasmoRESTApi.Data;
 
 namespace PhasmoRESTApi.Migrations
 {
     [DbContext(typeof(PhasmoContext))]
-    [Migration("20210906184224_InitialMigration")]
+    [Migration("20210907011728_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,8 @@ namespace PhasmoRESTApi.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("EvidenceId");
 
@@ -54,7 +55,8 @@ namespace PhasmoRESTApi.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Strengths")
                         .HasColumnType("nvarchar(max)");

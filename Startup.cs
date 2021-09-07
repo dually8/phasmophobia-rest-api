@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using PhasmoRESTApi.Models;
+using PhasmoRESTApi.Data;
 
 namespace PhasmoRESTApi
 {
@@ -37,7 +38,10 @@ namespace PhasmoRESTApi
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            // services.AddScoped<>();
+            services.AddScoped<IEvidenceRepo, SqlEvidenceRepo>();
+            services.AddScoped<IGhostRepo, SqlGhostRepo>();
+
+            //services.AddDatabaseDeveloperPageExceptionFilter();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
