@@ -11,6 +11,8 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using PhasmoRESTApi.Models;
 using PhasmoRESTApi.Data;
+using AutoMapper;
+using PhasmoRESTApi.Profiles;
 
 namespace PhasmoRESTApi
 {
@@ -36,10 +38,15 @@ namespace PhasmoRESTApi
                     s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
             services.AddScoped<IEvidenceRepo, SqlEvidenceRepo>();
             services.AddScoped<IGhostRepo, SqlGhostRepo>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            // services.AddSingleton(provider => new MapperConfiguration(cfg =>
+            // {
+            //     cfg.AddProfile(new GhostProfile(provider.GetService<PhasmoContext>()));
+            //     cfg.AddProfile(new EvidenceProfile());
+            // }).CreateMapper());
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
 

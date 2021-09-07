@@ -33,12 +33,12 @@ namespace PhasmoRESTApi.Data
 
         public IEnumerable<Ghost> GetAllGhosts()
         {
-            return _context.Ghosts.ToList();
+            return _context.Ghosts.Include(x => x.Ghost_Evidences).ToList();
         }
 
         public Ghost GetGhostById(long id)
         {
-            return _context.Ghosts.FirstOrDefault(x => x.GhostId == id);
+            return _context.Ghosts.Include(x => x.Ghost_Evidences).FirstOrDefault(x => x.GhostId == id);
         }
 
         public bool SaveChanges()
